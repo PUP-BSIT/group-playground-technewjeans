@@ -4,3 +4,4 @@ gender = "\nFemale"
 email = "\nangelicajoyuy16@gmail.com"
 
 print (name, birthday, gender, email)
+dm = "Welcome to the team! -Joy"
