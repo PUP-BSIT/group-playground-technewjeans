@@ -21,18 +21,13 @@ def show_menu():
 # Function to list all movies
 def list_all_movies():
     # TODO: Clarence 
-    if not movie_dict:
+    if not movies:
         print("No movies available.")
     else:
-        print("\nMovies:")
-        for title, details in movie_dict.items():
-            print(f"Title: {title}")
-            if not details:
-                print("  No details available.")
-            else:
-                for key, value in details.items():
-                    print(f"  {key}: {value}")
-            print()
+        for key in movies:
+            print(f"{key}: {movies[key]}")
+        
+        return "
 
    
 def add_movie():
