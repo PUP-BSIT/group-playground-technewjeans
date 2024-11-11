@@ -99,7 +99,11 @@ def search_movie():
     if found_movies:
         print("\nSearch Results:")
         for movie in found_movies:
-            print(f"Title: {movie['title']} | Director: {movie['director']} | Release Date: {movie['Release Date']} | Genre: {movie['Genre']} | Language: {movie['Language']}")
+            print(f"Title: {movie['title']},
+                    Director: {movie['director']},
+                    Release Date: {movie['Release Date']},
+                    Genre: {movie['Genre']},
+                    Language: {movie['Language']}")
     else:
         print("No movies found.")
         
