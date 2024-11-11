@@ -31,79 +31,51 @@ def list_all_movies():
    
 def add_movie():
     title = input("Enter film title: ")
-    author = input("Enter film director: ")
-    year = input("Enter film release date: ") 
+    director = input("Enter film director: ")
+    release_date = input("Enter film release date: ") 
     genre = input("Enter film genre: ")
     language = input("Enter film language: ")
 
-    add_movie = {
-        "title": title,
-        "author": author,
-        "year": year,
-        "genre": genre,
-        "language": language,
-    }
-
-    movies.append(movies)
-    print("Film added succesfully!/n")
-
-    add_movie()
-    print(movies)
+    movies["Title"].append(title)
+    movies["Director"].append(director)
+    movies["Release date"].append(release_date)
+    movies["Genre"].append(genre)
+    movies["Language"].append(language)
+    print("Film added successfully!\n")
     
 def update_movie():
-    title = input("Enter the title of the movie to update: ")
-    for movie in movies:
-        if movie["title"] == title:
-            # Prompt to update each attribute
-            new_title = input("Enter new title (leave blank to keep current): ")
-            if new_title:
-                movie["title"] = new_title
-
-            new_author = input("Enter new author/director (leave blank to keep current): ")
-            if new_author:
-                movie["author"] = new_author
-
-            new_year = input("Enter new year of release (leave blank to keep current): ")
-            if new_year:
-                movie["year"] = int(new_year)
-
-            new_genre = input("Enter new genre (leave blank to keep current): ")
-            if new_genre:
-                movie["genre"] = new_genre
-
-            new_language = input("Enter new language (leave blank to keep current): ")
-            if new_language:
-                movie["language"] = new_language
-
-            print("Movie updated successfully.")
-            return
-    print("Movie not found.")
+    update_info = input("Enter the list (Title, Director, Release date, Genre, Language) you want to update: ")
+    if update_info in movies:
+        key_info = int(input("Enter the key index you want to update: "))
+        update_value = input (f"Enter the new value for {update_info}: ")
+        movies[update_info][key_info] = update_value
+    else:
+        print("No data record in dictionary")
+    
+    return " "
     
 def delete_movie():
     title_to_delete = input("Enter the title of the movie to delete: ")
-    found = False
+    if title_to_delete in movies ["Title"]:
+        index = movies["Title"].index(title_to_delete)
 
-    for movie in movies:
-        if movie["Title"] == title_to_delete:
-            movies.remove(movie)
-            found = True
-            print(f"'{title_to_delete}' has been deleted.")
-            break
+        for key in movies:
+            movies[key].pop(index)
+        print(f"'{title_to_delete}' has been deleted.")
 
-    if not found:
+    else:
         print(f"No movie found with the title '{title_to_delete}'.")
     
 def search_movie():
-    search_term = input("Enter the Movie title to search: ")
-    found_movies = [movie for movie in movies if search_term in movie['title']]
-    if found_movies:
+    search_term = input("Enter the movie title to search: ")
+    if search_term in movies["Title"]:
+        index = movies["Title"].index(search_term)
         print("\nSearch Results:")
-        for movie in found_movies:
-            print(f"Title: {movie['title']},
-                    Director: {movie['director']},
-                    Release Date: {movie['Release Date']},
-                    Genre: {movie['Genre']},
-                    Language: {movie['Language']}")
+        print(f"Title: {movies['Title'][index]}")
+        print(f"Director: {movies['Director'][index]}")
+        print(f"Release Date: {movies['Release date'][index]}")
+        print(f"Genre: {movies['Genre'][index]}")
+        print(f"Language: {movies['Language'][index]}")
     else:
         print("No movies found.")
         
@@ -127,3 +99,6 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
