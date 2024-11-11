@@ -21,18 +21,19 @@ def show_menu():
 # Function to list all movies
 def list_all_movies():
     # TODO: Clarence 
-    def list_all_movies(movies):
-    if not movies:
+    def list_all_movies(movie_dict):
+    if not movie_dict:
         print("No movies available.")
     else:
         print("\nMovies:")
-    for idx, movie in enumerate(movies, start=1):
-            print(f"{idx}. Title: {movie['Title']}, 
-        Title: {movie['Director']},
-        Director: {movie['Genre']}, 
-        Year Released: {movie['Year Released']}, 
-        Genre: {movie['Genre']}")
-        Language: ()
+        for title, details in movie_dict.items():
+            print(f"Title: {title}")
+            if not details:
+                print("  No details available.")
+            else:
+                for key, value in details.items():
+                    print(f"  {key}: {value}")
+            print()
 
    
 def add_movie():
@@ -40,7 +41,34 @@ def add_movie():
     
 def update_movie():
     # TODO: Member Joy
-   
+    title = input("Enter the title of the movie to update: ")
+    for movie in movies:
+        if movie["title"] == title:
+            # Prompt to update each attribute
+            new_title = input("Enter new title (leave blank to keep current): ")
+            if new_title:
+                movie["title"] = new_title
+
+            new_author = input("Enter new author/director (leave blank to keep current): ")
+            if new_author:
+                movie["author"] = new_author
+
+            new_year = input("Enter new year of release (leave blank to keep current): ")
+            if new_year:
+                movie["year"] = int(new_year)
+
+            new_genre = input("Enter new genre (leave blank to keep current): ")
+            if new_genre:
+                movie["genre"] = new_genre
+
+            new_language = input("Enter new language (leave blank to keep current): ")
+            if new_language:
+                movie["language"] = new_language
+
+            print("Movie updated successfully.")
+            return
+    print("Movie not found.")
+    
 def delete_movie():
     # TODO: Hannah
     title_to_delete = input("Enter the title of the movie to delete: ")
@@ -58,15 +86,7 @@ def delete_movie():
     
 def search_movie():
     # TODO: Krislyn
-    search_term = input("Enter the Movie title to search: ")
-    found_movies = [movie for movie in movies if search_term in movie['title']]
-    if found_movies:
-        print("\nSearch Results:")
-        for movie in found_movies:
-            print(f"Title: {movie['title']} | Director: {movie['director']} | Release Date: {movie['Release Date']} | Genre: {movie['Genre']} | Language: {movie['Language']}")
-    else:
-        print("No movies found.")
-
+    
 # Main program loop
 def main():
     while True:
