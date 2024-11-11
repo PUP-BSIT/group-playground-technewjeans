@@ -37,6 +37,25 @@ def list_all_movies():
    
 def add_movie():
     # TODO: Member James
+    title = input("Enter film title: ")
+    author = input("Enter film director: ")
+    year = input("Enter film release date: ") 
+    genre = input("Enter film genre: ")
+    language = input("Enter film language: ")
+
+    add_movie = {
+        "title": title,
+        "author": author,
+        "year": year,
+        "genre": genre,
+        "language": language,
+    }
+
+    movies.append(movies)
+    print("Film added succesfully!/n")
+
+    add_movie()
+    print(movies)
     
 def update_movie():
     # TODO: Member Joy
