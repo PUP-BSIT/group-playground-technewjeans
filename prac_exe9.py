@@ -27,7 +27,7 @@ def list_all_movies():
         for key in movies:
             print(f"{key}: {movies[key]}")
         
-        return "
+        return " "
 
    
 def add_movie():
@@ -88,7 +88,7 @@ def delete_movie():
     found = False
 
     for movie in movies:
-        if movie["Title"].lower() == title_to_delete.lower():
+        if movie["Title"] == title_to_delete:
             movies.remove(movie)
             found = True
             print(f"'{title_to_delete}' has been deleted.")
