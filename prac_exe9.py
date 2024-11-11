@@ -86,7 +86,15 @@ def delete_movie():
     
 def search_movie():
     # TODO: Krislyn
-    
+    search_term = input("Enter the Movie title to search: ")
+    found_movies = [movie for movie in movies if search_term in movie['title']]
+    if found_movies:
+        print("\nSearch Results:")
+        for movie in found_movies:
+            print(f"Title: {movie['title']} | Director: {movie['director']} | Release Date: {movie['Release Date']} | Genre: {movie['Genre']} | Language: {movie['Language']}")
+    else:
+        print("No movies found.")
+        
 # Main program loop
 def main():
     while True:
