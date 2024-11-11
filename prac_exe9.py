@@ -21,7 +21,6 @@ def show_menu():
 # Function to list all movies
 def list_all_movies():
     # TODO: Clarence 
-    def list_all_movies(movie_dict):
     if not movie_dict:
         print("No movies available.")
     else:
