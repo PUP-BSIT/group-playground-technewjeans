@@ -20,7 +20,6 @@ def show_menu():
 
 # Function to list all movies
 def list_all_movies():
-    # TODO: Clarence 
     if not movies:
         print("No movies available.")
     else:
@@ -31,7 +30,6 @@ def list_all_movies():
 
    
 def add_movie():
-    # TODO: Member James
     title = input("Enter film title: ")
     author = input("Enter film director: ")
     year = input("Enter film release date: ") 
@@ -53,7 +51,6 @@ def add_movie():
     print(movies)
     
 def update_movie():
-    # TODO: Member Joy
     title = input("Enter the title of the movie to update: ")
     for movie in movies:
         if movie["title"] == title:
@@ -83,7 +80,6 @@ def update_movie():
     print("Movie not found.")
     
 def delete_movie():
-    # TODO: Hannah
     title_to_delete = input("Enter the title of the movie to delete: ")
     found = False
 
@@ -98,7 +94,6 @@ def delete_movie():
         print(f"No movie found with the title '{title_to_delete}'.")
     
 def search_movie():
-    # TODO: Krislyn
     search_term = input("Enter the Movie title to search: ")
     found_movies = [movie for movie in movies if search_term in movie['title']]
     if found_movies:
