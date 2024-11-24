@@ -8,10 +8,10 @@ def arithmetic(num1,num2):
     product = pykbtcal.multiply_numbers(num1, num2)
     quotient = pykbtcal.divide_numbers_float(num1, num2)
 
-    print (f"\nThe Sum of {num1} and {num2} is {sum}")
-    print (f"The Difference of {num1} and {num2} is {difference}")
-    print (f"The Product of {num1} and {num2} is {product}")
-    print (f"The Quotient of {num1} and {num2} is {quotient}\n")
+    print (f"\n{sum}")
+    print (difference)
+    print (product)
+    print (f"{quotient}\n")
 
 def main():
     n1 = int(input("\nEnter 1st number: "))
