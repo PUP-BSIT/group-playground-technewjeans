@@ -1,1 +1,0 @@
-Portrait of a Lady on Fire
