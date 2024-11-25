@@ -1,6 +1,5 @@
 import pykbtcal
 
-print ("\n--Basic Python Arithmetic Operations--")
 
 def arithmetic(num1,num2):
     sum = pykbtcal.add_numbers(num1, num2)
@@ -14,6 +13,8 @@ def arithmetic(num1,num2):
     print (f"{quotient}\n")
 
 def main():
+    print ("\n--Basic Python Arithmetic Operations--")
+    
     n1 = int(input("\nEnter 1st number: "))
     n2 = int(input("Enter 2nd number: "))
 
