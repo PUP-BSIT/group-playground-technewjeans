@@ -14,8 +14,8 @@ def arithmetic(num1,num2):
 
 def main():
     print ("\n--Basic Python Arithmetic Operations--")
-    
-    n1 = int(input("\nEnter 1st number: "))
+
+    n1 = int(input("Enter 1st number: "))
     n2 = int(input("Enter 2nd number: "))
 
     arithmetic(n1, n2)
