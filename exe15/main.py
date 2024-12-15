@@ -17,7 +17,8 @@ def main():
 
         match choice:
             case "1":
-
+                os.system('cls')
+                films.menu()
             case "2":
                 print("Exiting the program. Goodbye!")
                 break
