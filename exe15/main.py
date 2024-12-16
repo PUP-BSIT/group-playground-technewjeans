@@ -1,9 +1,11 @@
 import os
 from technewjeans_package.uy import Game
 from technewjeans_package.mejares import GBank
+from technewjeans_package.genandoy import OrderSystem
 
 def main():
     bank = GBank(profile={}, balance=0.0)#need gumawa ng instance
+    order_system = OrderSystem()
 
     while True:
         os.system('cls')
@@ -22,7 +24,8 @@ def main():
                 pass
             case "2":
                 os.system('cls')
-                pass
+                order_system.customer = input("Enter customer name: ")
+                order_system.menu()
             case "3":
                 os.system('cls')
                 bank.menu()
