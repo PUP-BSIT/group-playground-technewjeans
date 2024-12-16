@@ -1,4 +1,5 @@
 import os
+from technewjeans_package.uy import Game
 from technewjeans_package.mejares import GBank
 
 def main():
@@ -27,7 +28,7 @@ def main():
                 bank.menu()
             case "4":
                 os.system('cls')
-                pass
+                Game.uy_menu()
             case "5":
                 os.system('cls')
                 pass
