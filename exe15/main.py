@@ -2,10 +2,11 @@ import os
 from technewjeans_package.uy import Game
 from technewjeans_package.mejares import GBank
 from technewjeans_package.genandoy import OrderSystem
+from technewjeans_package.villas import Music
 
 def main():
     bank = GBank(profile={}, balance=0.0)#need gumawa ng instance
-    order_system = OrderSystem()
+    order_system = OrderSystem() 
 
     while True:
         os.system('cls')
@@ -34,7 +35,13 @@ def main():
                 Game.uy_menu()
             case "5":
                 os.system('cls')
-                pass
+                song_title = input("Enter the Song Title: ")
+                song_writer = input("Enter the Song Writer: ")
+                genre = input("Enter the Genre: ")
+                year_release = input("Enter the Year of Release: ")
+                music1 = Music(song_title, song_writer, genre, year_release)
+    
+                music1.menu()
             case "6":
                 print("Exiting the program. Goodbye!")
                 break
