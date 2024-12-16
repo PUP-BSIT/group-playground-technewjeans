@@ -3,6 +3,7 @@ from technewjeans_package.uy import Game
 from technewjeans_package.mejares import GBank
 from technewjeans_package.genandoy import OrderSystem
 from technewjeans_package.villas import Music
+from technewjeans_package.francisco import Information
 
 def main():
     bank = GBank(profile={}, balance=0.0)#need gumawa ng instance
@@ -22,7 +23,8 @@ def main():
         match choice:
             case "1":
                 os.system('cls')
-                pass
+                information = Information(age=19, city="Taguig City", school="PUP-Taguig")
+                information.menu()
             case "2":
                 os.system('cls')
                 order_system.customer = input("Enter customer name: ")
