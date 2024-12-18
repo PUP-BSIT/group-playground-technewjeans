@@ -1,6 +1,6 @@
 import os
 from technewjeans_package.uy import Game
-from technewjeans_package.mejares import GamblingAddiction
+from technewjeans_package.mejares import Gamble
 from technewjeans_package.genandoy import OrderSystem
 from technewjeans_package.villas import Music
 from technewjeans_package.francisco import Information
@@ -30,8 +30,8 @@ def main():
                 order_system.menu()
             case "3":
                 os.system('cls')
-                gamble = GamblingAddiction(profile={}, balance=0.0, luck=0.0)
-                gamble.mejares_menu()
+                gamble = Gamble(profile={}, balance=0.0, luck=0.0)
+                gamble.display_user_choices()
             case "4":
                 os.system('cls')
                 Game.uy_menu()

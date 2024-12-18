@@ -2,7 +2,10 @@
 import os
 import random
 
-class GamblingAddiction:
+EXIT_OPTION = 6
+UNSET_OPTION = -1
+
+class Gamble:
     def __init__(self, profile, balance,luck):
         self.profile = profile
         self.balance = balance
@@ -28,9 +31,9 @@ class GamblingAddiction:
         else:
             print('--No account found. Please create one.--')
     
-    def deposit(self):  #3
+    def get_deposit(self):  #3
         if self.profile:
-            amount = float(input('Enter the amount to deposit: ₱'))
+            amount = float(input('Enter amount to deposit: ₱'))
             self.balance += amount
             self.luck += amount * 0.1
             self.transactions.append(f'Deposited ₱{amount}')
@@ -42,13 +45,13 @@ class GamblingAddiction:
         else:
             print('--No account found. Please create one.--')
         
-    def waste_money_game(self): #4
+    def display_game(self): #4
         color = input('Enter color (red, blue, white, green, yellow): ')
         bet_amount = float(input('Enter the amount you want to bet: ₱'))
         
         valid_colors = ['red', 'blue', 'white', 'green', 'yellow']
         winning_color = random.choice(valid_colors)
-        print(f'The winning color is: {winning_color}')
+        print(f'\nThe winning color is: {winning_color}')
             
         if color == winning_color:
             prize = bet_amount * 2
@@ -66,8 +69,15 @@ class GamblingAddiction:
         else:
             print('--There are no transactions has been made.--')
 
-    def mejares_menu(self):
-        while True:
+    def display_user_choices(self):
+        os.system('cls')
+        user_choice = UNSET_OPTION
+        while user_choice != EXIT_OPTION:
+            user_choice = self.get_user_choice()
+            self.operate_choice(user_choice)
+            os.system('cls')
+
+    def get_user_choice(self):
             os.system('cls')
             print('--C0L0R GAME MENU--')
             print("1. Create Profile")
@@ -76,39 +86,41 @@ class GamblingAddiction:
             print("4. Play C0L0R GAME")
             print("5. Display transactions")
             print("6. Go back to main >>")
-            user_choice = input('Enter choice: ')
 
+            return int(input('Enter choice: '))
+                
+    def operate_choice(self,user_choice):
             match user_choice:
-                case "1":
+                case 1:
                     os.system('cls')
                     self.get_profile()
                     input("\nPress enter to continue.")
-                case "2":
+                case 2:
                     os.system('cls')
                     self.display_profile()
                     input("\nPress enter to continue.")
-                case "3":
+                case 3:
                     os.system('cls')
-                    self.deposit()
+                    self.get_deposit()
                     input("\nPress enter to continue.")
-                case "4":
+                case 4:
                     os.system('cls')
                     if self.profile and self.balance > 0:
                         print('---Welcome to C0L0R GAME---')
                         print(f'Balance: ₱{self.balance:.2f}')
                         print(f'Chances of winning: {self.luck:.2f}%')
                         print('--Choose color you want to bet your money on--')
-                        self.waste_money_game()
+                        self.display_game()
                     else:
                         print('--No account found or insufficient balance.--')
 
                     input("\nPress enter to continue.")
-                case "5":
+                case 5:
                     os.system('cls')
                     self.display_transactions()
                     input("\nPress enter to continue.")
-                case "6":
+                case 6:
                     print("Commence return to main...")
-                    break
+                    pass
                 case _:
                     print("Invalid choice, please select a valid option.")
