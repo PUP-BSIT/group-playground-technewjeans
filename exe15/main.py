@@ -1,12 +1,11 @@
 import os
 from technewjeans_package.uy import Game
-from technewjeans_package.mejares import GBank
+from technewjeans_package.mejares import GamblingAddiction
 from technewjeans_package.genandoy import OrderSystem
 from technewjeans_package.villas import Music
 from technewjeans_package.francisco import Information
 
 def main():
-    bank = GBank(profile={}, balance=0.0)#need gumawa ng instance
     order_system = OrderSystem() 
 
     while True:
@@ -31,7 +30,8 @@ def main():
                 order_system.menu()
             case "3":
                 os.system('cls')
-                bank.menu()
+                gamble = GamblingAddiction(profile={}, balance=0.0, luck=0.0)
+                gamble.mejares_menu()
             case "4":
                 os.system('cls')
                 Game.uy_menu()

@@ -1,117 +1,114 @@
+#mejares module with class
 import os
-import time
+import random
 
-class GBank:#my class
-    def __init__(self, profile, balance):#my constructor
-        self.profile = profile#my three property(ies)
+class GamblingAddiction:
+    def __init__(self, profile, balance,luck):
+        self.profile = profile
         self.balance = balance
         self.transactions = []
+        self.luck = luck
 
-    def get_profile(self): #method1 
+    def get_profile(self): #1
         print('--Create my Profile Section--')
         self.profile['name'] = input('Enter your name: ')
-        self.profile['id'] = input('Enter your id: ')
         self.profile['phone number'] = input('Enter your phone number: ')
-        time.sleep(2)
+        self.profile['password'] = input('Enter your password: ')
         print('--Account saved successfully--')
 
-    def display_profile(self): #metjod2
+    def display_profile(self): #2
         if self.profile:
-            time.sleep(2)
+
             print('--My Profile--')
-            print(f'Name: {self.profile["name"]}')
-            print(f'ID: {self.profile["id"]}')
-            print(f'Phone Number: {self.profile["phone number"]}')
+            print(f'Name: {self.profile['name']}')
+            print(f'Phone Number: {self.profile['phone number']}')
+            print(f'Password: {self.profile['password']}')
             print(f'Balance: {self.balance:.2f}')
+            print(f'Your current luck: {self.luck:.2f}')
         else:
             print('--No account found. Please create one.--')
+    
+    def deposit(self):  #3
+        if self.profile:
+            amount = float(input('Enter the amount to deposit: ₱'))
+            self.balance += amount
+            self.luck += amount * 0.1
+            self.transactions.append(f'Deposited ₱{amount}')
 
-    def deposit(self): #method3
-        amount = float(input('Enter the amount to deposit: ₱'))
-        self.balance += amount
-        self.transactions.append(f'Deposited ₱{amount}')
-        time.sleep(2)
-        print(f'\nYou have deposited ₱{amount} successfully')
-        print(f'Your new balance is ₱{self.balance:.2f}')
-        print('--Transaction recorded successfully--')
-
-    def send_money(self): #method4
-        amount = float(input('Enter the amount to send: ₱'))
-        recipient = input('Enter the recipient\'s name: ')
-        if amount <= self.balance:
-            self.balance -= amount
-            self.transactions.append(f'Sent ₱{amount} to {recipient}')
-            time.sleep(2)
-            print(f'\nYou have sent ₱{amount} to {recipient} successfully')
+            print(f'\nYou have deposited ₱{amount} successfully')
             print(f'Your new balance is ₱{self.balance:.2f}')
+            print(f'You gained {self.luck:.2f}% luck')
             print('--Transaction recorded successfully--')
         else:
-            print('You have insufficient balance')
-
-    def display_transactions(self):#method 5
+            print('--No account found. Please create one.--')
+        
+    def waste_money_game(self): #4
+        color = input('Enter color (red, blue, white, green, yellow): ')
+        bet_amount = float(input('Enter the amount you want to bet: ₱'))
+        
+        valid_colors = ['red', 'blue', 'white', 'green', 'yellow']
+        winning_color = random.choice(valid_colors)
+        print(f'The winning color is: {winning_color}')
+            
+        if color == winning_color:
+            prize = bet_amount * 2
+            self.balance += prize
+            print(f'WIN: ₱{prize:.2f} | Balance: ₱{self.balance:.2f}')
+        else:
+            self.balance -= bet_amount
+            print(f'LOSE: ₱{bet_amount:.2f} | Balance: ₱{self.balance:.2f}')
+        
+    def display_transactions(self):#5
         if self.transactions:
-            time.sleep(2)
             print('--My Transactions--')
             for transaction in self.transactions:
                 print(transaction)
         else:
             print('--There are no transactions has been made.--')
 
-    def menu(self):
+    def mejares_menu(self):
         while True:
             os.system('cls')
-            print('--Bank Menu--')
-            print('1. Create a Profile')
-            print('2. Display Profile')
-            print('3. Deposit money')
-            print ('4. Send express money')
-            print('5. Display all transactions')
-            print('6. Go to main menu')
-
-            try:
-                user_choice = int(input("\nEnter the number of your choice: "))
-            except ValueError:
-                print("Invalid input. Please enter a number again.")
-                input("\nPress enter to continue.")
-                continue
-            
-            if user_choice == 0:
-                break
+            print('--C0L0R GAME MENU--')
+            print("1. Create Profile")
+            print("2. Display Profile")
+            print("3. Cash-In M0ney")
+            print("4. Play C0L0R GAME")
+            print("5. Display transactions")
+            print("6. Go back to main >>")
+            user_choice = input('Enter choice: ')
 
             match user_choice:
-                case 1:
+                case "1":
                     os.system('cls')
                     self.get_profile()
-
-                case 2:
+                    input("\nPress enter to continue.")
+                case "2":
                     os.system('cls')
                     self.display_profile()
-
-                case 3:
+                    input("\nPress enter to continue.")
+                case "3":
                     os.system('cls')
                     self.deposit()
-
-                case 4:
+                    input("\nPress enter to continue.")
+                case "4":
                     os.system('cls')
-                    self.send_money()
+                    if self.profile and self.balance > 0:
+                        print('---Welcome to C0L0R GAME---')
+                        print(f'Balance: ₱{self.balance:.2f}')
+                        print(f'Chances of winning: {self.luck:.2f}%')
+                        print('--Choose color you want to bet your money on--')
+                        self.waste_money_game()
+                    else:
+                        print('--No account found or insufficient balance.--')
 
-                case 5:
+                    input("\nPress enter to continue.")
+                case "5":
                     os.system('cls')
                     self.display_transactions()
-                
-                case 6:
-                    print("Returning to the main menu...")
-                    time.sleep(2)
+                    input("\nPress enter to continue.")
+                case "6":
+                    print("Commence return to main...")
                     break
-
                 case _:
-                    print("Invalid choice. Please select a valid option.")
-
-            input("\nPress enter to continue.")
-            
-
-            
-        
-
-        
-
+                    print("Invalid choice, please select a valid option.")
