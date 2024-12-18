@@ -1,6 +1,9 @@
 import os
 import time
 
+EXIT_OPTION = "6"
+UNSET_OPTION = "0"
+
 class Music:
     def __init__(self, song_title, song_writer, genre, year_release):
         self.song_title = song_title
@@ -29,41 +32,51 @@ class Music:
         print("\nNew song added successfully!")
 
     def menu(self):
+        os.system("cls")  
+        choice = UNSET_OPTION
+        while choice != EXIT_OPTION:
+            choice = self.display_option()
+            self.process_choice(choice)
+            os.system("cls")
+
+    def display_option(self):
         while True:
             os.system('cls')
-            print("\n---- Clarence Villas Main Menu ----")
+            print("\n---- Clarence Villas Menu ----")
             print("1. Display Song Title")
             print("2. Display Song Writer")
             print("3. Display Genre")
             print("4. Display Year Release")
             print("5. Add New Song")
-            print("6. Exit")
-            choice = input("Please enter a number: ")
-
-            match choice:
-                case '1': 
-                    os.system('cls')
-                    self.display_song_title()
-                    input("\nPress enter to continue.")
-                case '2':
-                    os.system('cls')
-                    self.display_song_writer()
-                    input("\nPress enter to continue.")
-                case '3':
-                    os.system('cls')
-                    self.display_genre()
-                    input("\nPress enter to continue.")
-                case '4': 
-                    os.system('cls')
-                    self.display_year_release()
-                    input("\nPress enter to continue.")
-                case '5':
-                    os.system('cls')
-                    self.add_song()
-                    input("\nPress enter to continue.")
-                case '6':
-                    print("Exiting the menu. Bye!")
-                    time.sleep(2)
-                    break
-                case _:
-                    print("Invalid choice. Please try again.")
+            print("6. Back to the Main Menu")
+        
+            return input("Please enter a number: ")
+            
+    def process_choice(self, choice):
+        match choice:
+            case '1': 
+                os.system('cls')
+                self.display_song_title()
+                input("\nPress enter to continue.")
+            case '2':
+                os.system('cls')
+                self.display_song_writer()
+                input("\nPress enter to continue.")
+            case '3':
+                os.system('cls')
+                self.display_genre()
+                input("\nPress enter to continue.")
+            case '4': 
+                os.system('cls')
+                self.display_year_release()
+                input("\nPress enter to continue.")
+            case '5':
+                os.system('cls')
+                self.add_song()
+                input("\nPress enter to continue.")
+            case '6':
+                print("Back to Main Menu")
+                time.sleep(2)
+                pass
+            case _:
+                print("Invalid choice. Please try again.")
